@@ -114,6 +114,10 @@ class CredentialHelper {
                         mUserKey.getEncoded());
             }
             ArrayList<byte[]> certs = new ArrayList<byte[]>(mCaCerts.size() + 1);
+            //SPRD: Bug #474464 Porting WAPI feature BEG-->
+            if (mWapiAsCert != null) certs.add(mWapiAsCert);
+            if (mWapiUserCert != null) certs.add(mWapiUserCert);
+            //<-- Porting WAPI feature END
             if (mUserCert != null) {
                 certs.add(mUserCert.getEncoded());
             }
@@ -157,6 +161,16 @@ class CredentialHelper {
             X509Certificate cert = (X509Certificate)
                     certFactory.generateCertificate(
                             new ByteArrayInputStream(bytes));
+            //SPRD: Bug #474464 Porting WAPI feature BEG-->
+            int wapiStyle = getWapiStyle(cert);
+            if (wapiStyle == WAPI_CERT_AS_STYLE) {
+                Log.d(TAG, "got a WAPI AS cert");
+                mWapiAsCert = bytes;
+            } else if (wapiStyle == WAPI_CERT_USER_STYLE) {
+                Log.d(TAG, "got a WAPI user cert");
+                mWapiUserCert = bytes;
+            } else
+            //<-- Porting WAPI feature END
             if (isCa(cert)) {
                 Log.d(TAG, "got a CA cert");
                 mCaCerts.add(cert);
@@ -204,7 +218,11 @@ class CredentialHelper {
     }
 
     boolean hasAnyForSystemInstall() {
-        return (mUserKey != null) || hasUserCertificate() || hasCaCerts();
+        //SPRD: Bug #474464 Porting WAPI feature BEG-->
+        //return (mUserKey != null) || hasUserCertificate() || hasCaCerts();
+        return hasUserCertificate() || hasCaCerts()
+                || hasWapiAsCertificate() || hasWapiUserCertificate();
+        //<-- Porting WAPI feature END
     }
 
     void setPrivateKey(String algorithm, byte[] bytes) {
@@ -234,6 +252,14 @@ class CredentialHelper {
         // TODO: create more descriptive string
         StringBuilder sb = new StringBuilder();
         String newline = "<br>";
+        //SPRD: Bug #474464 Porting WAPI feature BEG-->
+        if (mWapiAsCert != null) {
+            sb.append(context.getString(R.string.one_wapi_ascrt)).append(newline);
+        }
+        if (mWapiUserCert != null) {
+            sb.append(context.getString(R.string.one_wapi_usercrt)).append(newline);
+        }
+        //<-- Porting WAPI feature END
         if (mUserKey != null) {
             sb.append(context.getString(R.string.one_userkey)).append(newline);
             sb.append(context.getString(R.string.userkey_type)).append(mUserKey.getAlgorithm())
@@ -301,6 +327,27 @@ class CredentialHelper {
                 intent.putExtra(Credentials.EXTRA_CA_CERTIFICATES_DATA,
                         Credentials.convertToPem(caCerts));
             }
+
+            //SPRD: Bug #474464 Porting WAPI feature BEG-->
+            if (mWapiAsCert != null) {
+                /* intent.putExtra(Credentials.WAPI_AS_CERTIFICATE + mName,
+                 * mWapiAsCert);
+                 */
+                intent.putExtra(Credentials.EXTRA_WAPI_AS_CERTIFICATES_NAME,
+                        Credentials.WAPI_AS_CERTIFICATE + mName);
+                intent.putExtra(Credentials.EXTRA_WAPI_AS_CERTIFICATES_DATA,
+                        mWapiAsCert);
+            }
+            if (mWapiUserCert != null) {
+                /* intent.putExtra(Credentials.WAPI_USER_CERTIFICATE + mName,
+                 * mWapiUserCert);
+                 */
+                intent.putExtra(Credentials.EXTRA_WAPI_USER_CERTIFICATES_NAME,
+                        Credentials.WAPI_USER_CERTIFICATE + mName);
+                intent.putExtra(Credentials.EXTRA_WAPI_USER_CERTIFICATES_DATA,
+                        mWapiUserCert);
+            }
+            //<-- Porting WAPI feature END
             return intent;
         } catch (IOException e) {
             throw new AssertionError(e);
@@ -451,4 +498,43 @@ class CredentialHelper {
             return true;
         }
     }
+
+    //=============================================================================
+    // add by sprd start
+    //=============================================================================
+
+    //SPRD: Bug #474464 Porting WAPI feature BEG-->
+    private static final String WAPI_CERT_SIG_ID = "1.2.156.11235.";
+    private static final int WAPI_CERT_AS_STYLE = 1;
+    private static final int WAPI_CERT_USER_STYLE = 2;
+
+    private byte[] mWapiAsCert;
+    private byte[] mWapiUserCert;
+
+    private int getWapiStyle(X509Certificate cert) {
+        try {
+            if (cert.getSigAlgOID().startsWith(WAPI_CERT_SIG_ID)) {
+                // TODO: add a test about this
+                String issuerName = cert.getIssuerX500Principal().getName();
+                String subjectName = cert.getSubjectX500Principal().getName();
+                if (issuerName.equals(subjectName)) {
+                    return WAPI_CERT_AS_STYLE;
+                } else {
+                    return WAPI_CERT_USER_STYLE;
+                }
+            }
+        } catch (Exception e) {
+        }
+        return -1;
+    }
+
+    boolean hasWapiAsCertificate() {
+        return (mWapiAsCert != null);
+    }
+
+    boolean hasWapiUserCertificate() {
+        return (mWapiUserCert != null);
+    }
+    //<-- Porting WAPI feature END
+
 }

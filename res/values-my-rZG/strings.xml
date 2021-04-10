@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<string name="app_name">"ေထာက္ခံခ်က္ ထည့္သြင္းစက္"</string>
+<string name="pick_file_title">"ေထာက္ခံခ်က္ တစ္ခုကို ေရြးခ်ယ္ပါ"</string>
+<string name="pkcs12_password_dialog_title">"ေထာက္ခံခ်က္ကို ေကာက္ႏႈတ္ေဖာ္ျပပါ"</string>
+<string name="extracting_pkcs12">"ေကာက္ႏႈတ္ေဖာ္ျပေနသည္…"</string>
+<string name="pkcs12_file_password_dialog_title">"မွ ေကာက္ႏႈတ္ေဖာ္ျပသည္ %s"</string>
+<string name="name_credential_dialog_title">"ေထာက္ခံခ်က္ကို အမည္ေပးပါ"</string>
+<string name="credential_name">"ေထာက္ခံခ်က္အမည္:"</string>
+<string name="credential_password">"ေထာက္ခံခ်က္မ်ားကို ေကာက္နႈတ္ေဖာ္ျပရန္ စကား၀ွက္ကို ရိုက္ပါ."</string>
+<string name="credential_info">"ပတ္ေက့ခ်္ တြင္ပါဝက္မႈမ်ား:"</string>
+<string name="p12_description">"PKCS12 ကီးစတိုးအတြက္ေထာက္ခံခ်က္မ်ား."</string>
+<string name="one_userkey">"သံုးစြဲသူ တစ္ဦးအတြက္ကီး"</string>
+<string name="one_usercrt">"သံုးစြဲသူ တစ္ဦးအတြက္ေထာက္ခံခ်က္"</string>
+<string name="one_cacrt">"CA တစ္ခုအတြက္ေထာက္ခံခ်က္"</string>
+<string name="n_cacrts">"%d စီေအေထာက္ခံခ်က္မ်ား"</string>
+<string name="password_error">"မွန္ကန္သည့္ စကား၀ွက္ကို ရိုက္ပါ."</string>
+<string name="password_empty_error">"စကား၀ွက္ကို ရိုက္ပါ."</string>
+<string name="name_empty_error">"အမည္ တစ္ခုကို ရိုက္ပါ."</string>
+<string name="name_char_error">" အကၡရာႏွင့္ နံပါတ္မ်ားသာပါသည့္ အမည္တစ္ခုကို ရိုက္ပါ."</string>
+<string name="unable_to_save_cert">"ေထာက္ခံခ်က္ကို မသိမ္းႏိုင္ပါ. သိုေလွာင္မွတ္ဥာဏ္၏ သက္ေသ အေထာက္အထား မရွိပါ (သို႕) အစျပဳေနျခင္း ျဖစ္လိမ့္မည္."</string>
+<string name="cert_not_saved">"ေထာက္ခံခ်က္ကို မထည့္သြင္းထားပါ."</string>
+<string name="no_cert_to_saved">"ေထာက္ခံခ်က္ကို ထည့္သြင္းရန္မရွိပါ."</string>
+<string name="invalid_cert">"ေထာက္ခံခ်က္ တရားမဝင္ပါ."</string>
+<string name="cert_is_added">"<xliff:g id="credential">%s</xliff:g> ထည့္သြင္းျပီးျပီ."</string>
+<string name="cert_too_large_error">"ေထာက္ခံခ်က္အရြယ္အစား သည္ အလြန္ၾကီးေသာေၾကာင့္ သြင္း၍ မရႏိုင္ပါ."</string>
+<string name="cert_missing_error">"ေထာက္ခံခ်က္ဖိုင္ မရွိျခင္းေၾကာင့္ သြင္း၍ မရနိုင္ပါ."</string>
+<string name="cert_read_error">"ေထာက္ခံခ်က္ဖိုင္ကိုဖတ္၍ မရေသာေၾကာင့္ သြင္း၍ မရနိုင္ပါ."</string>
+<string name="only_primary_user_allowed">"ဤစက္ပိုင္ရွင္သာလွ်င္၊ ေထာက္ခံခ်က္မ်ားကို သြင္းႏိုင္လိမ့္မည္."</string>
+<string name="credential_usage_label">"သက္ေသအေထာက္အထားသံုး:"</string>
+<string-array name="credential_usage">
+<item>"VPN နွင့္ေအပီပီ"</item>
+<item>"Wi-Fi"</item>
+</string-array>
+<string name="certificate_capabilities_warning">"မွတ္ခ်က္- ဤလက္မွတ္ကို ထုတ္ေပးသူက ဤစက္၏ ေဒတာစီးဆင္း ဝင္-ထြက္မႈမ်ားကို စံုစမ္းႏိုင္သည္။"</string>
+<string name="wifi_title">"Wi-Fi ပရိုဖိုင္း"</string>
+<string name="wifi_detail_title">"အတြက္ အေသးစိတ္မ်ား %s"</string>
+<string name="wifi_detail_label">အေသးစိတ္</string>
+<string name="wifi_install_label">"ထည့္သြင္းပါ"</string>
+<string name="wifi_installing_label">"ထည့္သြင္းေနသည္"</string>
+<string name="wifi_cancel_label">"မလုပ္ပါ"</string>
+<string name="wifi_dismiss_label">"ထုတ္ပယ္သည္"</string>
+<string name="wifi_no_config">တေယာက္မွ်</string>
+<string name="wifi_config_text">"အမည္: %1$s\nFQDN: %2$s\n ေရာမင္း အဖြဲ ့မ်ား: %3$s\n နယ္ပယ္: %4$s\nစစ္ေဆး နည္းလမ္း: EAP-%5$s\n"</string>
+<string name="wifi_ttls_config_text">"သံုးစြဲသူအမည္: %s\n"</string>
+<string name="wifi_tls_config_text">"ေဖာက္သည္ ေထာက္ခံခ်က္:\n%1$s\n ကီး: %2$s\n"</string>
+<string name="wifi_sim_config_text">"SIM: %s\n"</string>
+<string name="wifi_trust_config_text">"ယံုၾကည္ရေသာ ေထာက္ခံခ်က္:\n%s\n"</string>
+<string name="install_done_title">"အေထာက္အထားမ်ား သြင္းျပီး"</string>
+<string name="install_done">"<xliff:g id="name">%1$s</xliff:g> အေထာက္အထားမ်ားကို သိမ္းထားေသာ Wi-Fi ကြန္ရက္မ်ားသို႔ ေပါင္းထည့္လုိက္ပါၿပီ&#46;"</string>
+<string name="done_label">"ျပီးပါျပီ"</string>
+<string name="wifi_installer_detail">" <xliff:g id="name">%1$s</xliff:g> မွတဆင့္ ရႏိုင္ေသာ ကြန္ရက္မ်ားႏွင့္ ခ်ိတ္ဆက္ရန္ Wi-Fi အေထာက္အထားမ်ားကို အင္စေတာလုပ္ပါ&#46;"</string>
+<string name="wifi_installer_download_error">"ေဒါင္းလုဒ္ယူထားေသာ ဖိုင္တြင္ ခြ်တ္ယြင္းမႈရွိ၍ အင္စေတာမလုပ္ႏိုင္ပါ&#46; မွန္ကန္ေသာ ရင္းျမစ္မွ သင္ ေဒါင္းလုဒ္ယူမိေၾကာင္း ေသခ်ာေအာင္လုပ္ပါ&#46;"</string>
+<string name="wifi_installer_fail">"Wi-Fi အေထာက္အထားမ်ားကို အင္စေတာ မလုပ္ႏိုင္ပါ&#46; ဖိုင္ကို ထပ္၍ ေဒါင္းလုဒ္လုပ္ၾကည့္ပါ&#46;"</string>
+<string name="wifi_installer_fail_no_wifi_title">"သြင္းျခင္း ပယ္ဖ်က္ျပီး"</string>
+<string name="wifi_installer_fail_title">"သြင္းမရနိုင္"</string>
+<string name="wifi_installer_fail_no_wifi">"Wi-Fi ဖြင့္၍ ထပ္ႀကိဳးစားၾကည့္ပါ&#46;"</string>
+</resources>

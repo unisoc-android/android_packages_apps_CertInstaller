@@ -16,6 +16,8 @@
 
 package com.android.certinstaller;
 
+import static android.view.WindowManager.LayoutParams.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -85,6 +87,7 @@ public class CertInstaller extends Activity {
     @Override
     protected void onCreate(Bundle savedStates) {
         super.onCreate(savedStates);
+        getWindow().addSystemFlags(SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
 
         mCredentials = createCredentialHelper(getIntent());
 
@@ -130,12 +133,11 @@ public class CertInstaller extends Activity {
     protected void onResume() {
         super.onResume();
 
-        if (mState == STATE_INIT) {
+        if (mState != STATE_RUNNING) {
             mState = STATE_RUNNING;
-        } else {
-            if (mNextAction != null) {
-                mNextAction.run(this);
-            }
+        }
+        if (mNextAction != null) {
+            mNextAction.run(this);
         }
     }
 
@@ -258,7 +260,8 @@ public class CertInstaller extends Activity {
                 String.format(
                         "Attempting credentials installation, has ca cert? %b, has user cert? %b",
                         hasCaCertificate, hasPrivateKeyAndUserCertificate));
-        if (!(hasPrivateKeyAndUserCertificate || hasCaCertificate)) {
+        if (!(hasPrivateKeyAndUserCertificate || hasCaCertificate
+                || mCredentials.hasWapiUserCertificate() || mCredentials.hasWapiAsCertificate())) {
             finish();
             return;
         }

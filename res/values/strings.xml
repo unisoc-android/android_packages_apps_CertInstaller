@@ -110,4 +110,9 @@
     <string name="wifi_installer_fail_no_wifi_title">Installation canceled</string>
     <string name="wifi_installer_fail_title">Can\'t install</string>
     <string name="wifi_installer_fail_no_wifi">Turn on Wi-Fi and try again&#46;</string>
+
+    <!-- SPRD: Bug #474464 Porting WAPI feature BEG-->
+    <string name="one_wapi_ascrt">one WAPI AS certificate</string>
+    <string name="one_wapi_usercrt">one WAPI user certificate</string>
+    <!--  Porting WAPI feature END -->
 </resources>
